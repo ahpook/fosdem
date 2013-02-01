@@ -5,13 +5,14 @@ Vagrant::Config.run do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
+  ubuntu_box = "http://puppetlabs.s3.amazonaws.com/pub/vagrant/ubuntu-server-1204-x64.box"
  
   # per-VM configuration goes here
   config.vm.define :webnode do |webnode_config|
-    webnode_config.ssh.max_tries = 150
-    webnode_config.vm.box = "ubuntu-server-1204-x64"
+    webnode_config.vm.box = 'ubuntu-server-1204-x64'
+    webnode_config.vm.box_url = ubuntu_box
     webnode_config.vm.network :hostonly, "192.168.23.20"
-    webnode_config.vm.share_folder "Sandbox", "/Sandbox", "/Users/eric/Sandbox", :nfs => true
+
     webnode_config.vm.boot_mode = :gui
     webnode_config.vm.host_name = "webnode.local"
     webnode_config.vm.provision :puppet do |webnode_puppet|
@@ -22,11 +23,10 @@ Vagrant::Config.run do |config|
   end
 
   config.vm.define :dbnode do |dbnode_config|
-    dbnode_config.ssh.max_tries = 150
-    dbnode_config.vm.box = "ubuntu-server-1204-x64"
+    dbnode_config.vm.box = 'ubuntu-server-1204-x64'
+    dbnode_config.vm.box_url = ubuntu_box
     dbnode_config.vm.network :hostonly, "192.168.23.21"
 
-    dbnode_config.vm.share_folder "Sandbox", "/Sandbox", "/Users/eric/Sandbox", :nfs => true
     dbnode_config.vm.boot_mode = :gui
     dbnode_config.vm.host_name = "dbnode.local"
     dbnode_config.vm.provision :puppet do |dbnode_puppet|
