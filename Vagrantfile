@@ -8,9 +8,9 @@ Vagrant::Config.run do |config|
  
   # per-VM configuration goes here
   config.vm.define :webnode do |webnode_config|
-    webnode_config.vm.box = "ubuntu-12.04-i386-vbox.4.1.23"
+    webnode_config.ssh.max_tries = 150
+    webnode_config.vm.box = "ubuntu-server-1204-x64"
     webnode_config.vm.network :hostonly, "192.168.23.20"
-
     webnode_config.vm.share_folder "Sandbox", "/Sandbox", "/Users/eric/Sandbox", :nfs => true
     webnode_config.vm.boot_mode = :gui
     webnode_config.vm.host_name = "webnode.local"
@@ -22,7 +22,8 @@ Vagrant::Config.run do |config|
   end
 
   config.vm.define :dbnode do |dbnode_config|
-    dbnode_config.vm.box = "ubuntu-12.04-i386-vbox.4.1.23"
+    dbnode_config.ssh.max_tries = 150
+    dbnode_config.vm.box = "ubuntu-server-1204-x64"
     dbnode_config.vm.network :hostonly, "192.168.23.21"
 
     dbnode_config.vm.share_folder "Sandbox", "/Sandbox", "/Users/eric/Sandbox", :nfs => true
