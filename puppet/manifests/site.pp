@@ -38,7 +38,7 @@ node 'dbnode' {
 
   # this is a defined type that looks like a resource
   mysql::db { 'wordpress':
-    ensure   => absent,
+    ensure   => present,
     user     => 'wordpress',
     password => 'puppetr0x',
     host     => 'webnode',
