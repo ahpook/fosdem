@@ -9,7 +9,7 @@ node default {
     host_aliases => [ 'glitched','glitched.local' ],
     ip           => '192.168.23.10',
   }
-s
+
   $keydir = "/var/lib/puppet/ssl/private_keys"
 
   exec { "make_keydir":
