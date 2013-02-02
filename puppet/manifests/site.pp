@@ -10,6 +10,12 @@ node 'webnode' {
   include apache
   include apache::mod::php
 
+  package { 'php5-mysql':
+    ensure => latest,
+    require => Class['apache::mod::php'],
+    notify  => Service['httpd'],
+  }
+
   apache::vhost { 'default':
     port    => '80',
     docroot => '/opt/wordpress',
