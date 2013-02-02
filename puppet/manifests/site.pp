@@ -8,6 +8,12 @@ node 'webnode' {
   include common
 
   include apache
+  include apache::mod::php
+
+  apache::vhost { 'default':
+    port    => '80',
+    docroot => '/opt/wordpress',
+  }
 
   # this is like 'include wordpress' with parameters
   class { 'wordpress':

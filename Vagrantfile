@@ -19,6 +19,8 @@ Vagrant::Config.run do |config|
       webnode_puppet.pp_path = "/tmp/vagrant-puppet"
       webnode_puppet.manifests_path = "vagrant_manifests"
       webnode_puppet.manifest_file = "site.pp"
+      webnode_puppet.module_path = "puppet/modules"
+
     end
   end
 
@@ -33,6 +35,7 @@ Vagrant::Config.run do |config|
       dbnode_puppet.pp_path = "/tmp/vagrant-puppet"
       dbnode_puppet.manifests_path = "vagrant_manifests"
       dbnode_puppet.manifest_file = "site.pp"
+      dbnode_puppet.module_path = "puppet/modules"
     end
   end
 
