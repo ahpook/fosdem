@@ -13,7 +13,7 @@ node default {
   $keydir = "/var/lib/puppet/ssl/private_keys"
 
   exec { "make_keydir":
-    command => "/bin/mkdir -p ${keydir}":
+    command => "/bin/mkdir -p ${keydir}",
     creates => $keydir
   }
 
