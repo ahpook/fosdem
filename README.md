@@ -66,18 +66,14 @@ The provision part is Vagrant's equivalent of a post-kickstart script; it runs a
 * host: show vagrant-manifests/site.pp with hosts declaration
 * host: vagrant up webnode dbnode
 
-So now the hosts are running, what's next? We need to point them
-at the master to configure them -- usually this is done as a post-provisioning step.
+So now the hosts are running, what's next? We need to point them at the master to configure them -- usually this is done as a post-provisioning step.
 
-Went out onto the forge and found some good modules, built up a little site config for
-them.
+Went out onto the forge and found some good modules, built up a little site config for them.
 
 * host: puppet module list --confdir /Sandbox/fosdem/puppet/
 * host: show manifests/site.pp
 
-There are two node definitions here, one for the host named webnode and one for the dbnode.
-The things that are common to both of them I've put in a little module called, surprinsgly
-enough, 'common'. Then the host-specific stuff follows in the node definition.
+There are two node definitions here, one for the host named webnode and one for the dbnode. The things that are common to both of them I've put in a little module called, surprinsgly enough, 'common'. Then the host-specific stuff follows in the node definition.
 
 * host: show common
 
@@ -97,10 +93,9 @@ Now let's repeat it on the web node, which as you can see isn't up yet
 
 * host: browser : http://webnode.local/
 * host: vagrant ssh webnode
-* webnode: sudoe puppet agent -t
+* webnode: sudo puppet agent -t
 
-Tons of stuff got installed there, according to the ordering and dependency chain in the model. Now
-we should be able to go to the root of the site and set up wordpress
+Tons of stuff got installed there, according to the ordering and dependency chain in the model. Now we should be able to go to the root of the site and set up wordpress:
 
 * host: browser reload on http://webnode.local/
 * host: go through install guide.

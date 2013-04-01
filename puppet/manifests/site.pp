@@ -1,7 +1,9 @@
 # site.pp with node definitions for a two-node wordpress config
 
 # global default -- all packages need our local source
-Package { require => Apt::Source['puppet'] }
+if $osfamily == 'Debian' {
+  Package { require => Apt::Source['puppet'] }
+}
 
 node 'webnode' {
 
@@ -62,6 +64,10 @@ node 'dbnode' {
     ip     => '192.168.23.20'
   }
 
+}
+
+node 'glitched' {
+  include common::master
 }
 
 node 'default' {
