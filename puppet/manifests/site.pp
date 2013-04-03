@@ -2,7 +2,10 @@
 
 # global default -- all packages need our local source
 if $osfamily == 'Debian' {
-  Package { require => Apt::Source['puppet'] }
+  Package {
+    require => Apt::Source['puppet']
+  }
+
 }
 
 node 'webnode' {
